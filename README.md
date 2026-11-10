@@ -9,6 +9,7 @@ Skills são pacotes com instruções e scripts que o Claude executa para fazer u
 | **Copiloto Financeiro** | Lê o extrato do banco (CSV, OFX, PDF ou print), categoriza os gastos com regras que aprendem com você e gera o painel do mês com orçamento, metas e alertas. | Qualquer plano do Claude, inclusive o gratuito | [copiloto-financeiro.zip](https://github.com/fp-costa91/skills/raw/main/copiloto-financeiro.zip) |
 | **Editor de Reels** | Transforma takes gravados no celular em um Reel pronto: escolhe o melhor take, corta pausas, legenda com destaque, b-roll e áudio no padrão das redes. | App desktop do Claude ou Claude Code (precisa de ffmpeg e Python) | [editor-de-reels.zip](https://github.com/fp-costa91/skills/raw/main/editor-de-reels.zip) |
 | **Relatório automático** | Transforma uma planilha em relatório executivo em PDF, com indicadores, gráficos, alertas e uma análise escrita como a de um analista. Pode enviar por e-mail. | Qualquer plano do Claude com execução de código | [relatorio-automatico.zip](https://github.com/fp-costa91/skills/raw/main/relatorio-automatico.zip) |
+| **Painel interativo** | Transforma qualquer planilha num painel interativo em um único arquivo HTML: filtros, indicadores vs período anterior, gráfico que explica a variação e detalhe ao passar o mouse. Sem Power BI nem ferramenta paga. | Qualquer plano do Claude com execução de código | [painel-interativo.zip](https://github.com/fp-costa91/skills/raw/main/painel-interativo.zip) |
 
 ## Como instalar
 
