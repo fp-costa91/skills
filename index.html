@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferramentas grátis de IA · Filipe | Dados e IA</title>
+<style>
+:root{--bg:#0d0f12;--card:#161a20;--line:#252b34;--ink:#f3f4f6;--mut:#9aa3af;--y:#ffd43b;--g:#3ddc84}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:20px 18px 60px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.av{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--y);background:linear-gradient(135deg,var(--y),#ff922b);display:grid;place-items:center;font-weight:800;color:#111}
+.top b{display:block}.top span{color:var(--mut);font-size:14px}
+h1{font-size:30px;line-height:1.15;margin-bottom:10px}
+h1 em{font-style:normal;color:var(--y)}
+.sub{color:var(--mut);margin-bottom:20px}
+.alert{display:none;background:#2a2410;border:1px solid #5c4b12;border-radius:14px;padding:14px 16px;margin-bottom:22px}
+.alert.show{display:block}
+.alert b{color:var(--y)}
+.alert p{font-size:15px;margin:4px 0 12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 18px;font:700 16px system-ui;cursor:pointer;text-decoration:none;width:100%}
+.btn.y{background:var(--y);color:#111}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.grid{display:grid;gap:14px;margin-bottom:34px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.ic{font-size:28px}
+.card h3{font-size:19px}
+.card p{color:var(--mut);font-size:15px;flex:1}
+.tag{font-size:12px;color:var(--g);background:#10251a;border-radius:99px;padding:3px 10px;align-self:flex-start}
+.tag.w{color:#ffa94d;background:#2b1d0e}
+h2{font-size:22px;margin-bottom:14px}
+.steps{display:grid;gap:12px;margin-bottom:34px}
+.step{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+.n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--y);color:#111;font-weight:800;display:grid;place-items:center}
+.step p{color:var(--mut);font-size:15px}
+.mock{margin-top:10px;background:#0a0c0f;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px;color:var(--mut);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.mock i{font-style:normal;background:#1f252d;color:var(--ink);border-radius:6px;padding:3px 8px}
+.mock .hl{background:var(--y);color:#111;font-weight:700}
+.try{background:#101a14;border:1px solid #1d3a28;border-radius:16px;padding:16px;margin-bottom:34px}
+.try p{color:var(--mut);font-size:15px}
+.try q{display:block;margin-top:8px;color:var(--ink);font-style:italic}
+.biz{background:linear-gradient(135deg,#1c1a0d,#16130a);border:1px solid #4a3f12;border-radius:18px;padding:20px;margin-bottom:28px}
+.biz p{color:var(--mut);margin:6px 0 14px}
+.foot{color:#6b7280;font-size:13px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--g);color:#06210f;font-weight:700;padding:10px 16px;border-radius:10px;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><img class="av" src="data:image/jpeg;base64,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" alt="Filipe"><div><b>Filipe | Dados e IA</b><span>@filipe.dadoseia</span></div></div>
+
+  <h1>Suas ferramentas de IA <em>grátis</em> chegaram 🎁</h1>
+  <p class="sub">Automações prontas pra usar no Claude. Você baixa, instala uma vez e pede a tarefa em português, como se falasse com um assistente.</p>
+
+  <div class="alert" id="mob">
+    <b>📱 Você está no celular</b>
+    <p>A instalação é feita no computador (leva 2 minutos). Mande o link pra você e abra lá depois:</p>
+    <button class="btn y" id="send">Enviar o link pra mim</button>
+  </div>
+
+  <div class="grid">
+    <div class="card"><div class="ic">💰</div><h3>Copiloto Financeiro</h3>
+      <p>Manda o extrato do banco (até print serve) e recebe seus gastos organizados por categoria, com orçamento, metas e alertas do mês.</p>
+      <span class="tag">Funciona no navegador</span>
+      <a class="btn y" href="https://github.com/fp-costa91/skills/raw/main/copiloto-financeiro.zip">Baixar</a></div>
+    <div class="card"><div class="ic">📈</div><h3>Relatório automático</h3>
+      <p>Transforma uma planilha num relatório em PDF com indicadores, gráficos e uma análise escrita, pronto pra mandar pro chefe ou cliente.</p>
+      <span class="tag">Funciona no navegador</span>
+      <a class="btn y" href="https://github.com/fp-costa91/skills/raw/main/relatorio-automatico.zip">Baixar</a></div>
+    <div class="card"><div class="ic">📊</div><h3>Painel interativo</h3>
+      <p>Qualquer planilha vira um painel com filtros e comparação com o mês anterior, num arquivo que abre em qualquer navegador. Sem Power BI.</p>
+      <span class="tag">Funciona no navegador</span>
+      <a class="btn y" href="https://github.com/fp-costa91/skills/raw/main/painel-interativo.zip">Baixar</a></div>
+    <div class="card"><div class="ic">🎬</div><h3>Editor de Reels</h3>
+      <p>Seus vídeos gravados no celular viram um Reel pronto: corta pausas, coloca legenda e ajusta o áudio.</p>
+      <span class="tag w">Precisa do app do Claude no computador</span>
+      <a class="btn y" href="https://github.com/fp-costa91/skills/raw/main/editor-de-reels.zip">Baixar</a></div>
+  </div>
+
+  <h2>Como instalar (2 minutos)</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><b>Baixe a ferramenta</b><p>Clique em "Baixar" acima. Não precisa abrir nem descompactar o arquivo.</p></div></div>
+    <div class="step"><div class="n">2</div><div><b>Envie para o Claude</b><p>Entre em claude.ai e siga este caminho:</p>
+      <div class="mock"><i>Personalizar</i>›<i>Skills</i>›<i>+</i>›<i class="hl">Enviar uma skill</i></div></div></div>
+    <div class="step"><div class="n">3</div><div><b>Ligue a criação de arquivos</b><p>Uma vez só, em:</p>
+      <div class="mock"><i>Configurações</i>›<i>Capacidades</i>›<i class="hl">Execução de código ✓</i></div></div></div>
+    <div class="step"><div class="n">4</div><div><b>Peça em português</b><p>Abra uma conversa nova, anexe o arquivo e peça. Pronto.</p></div></div>
+  </div>
+
+  <div class="try"><b>💬 Exemplos pra testar agora</b>
+    <p><q>"Faz meu check-in do mês" (com o extrato anexado)</q>
+    <q>"Transforma essa planilha num relatório pra diretoria"</q>
+    <q>"Cria um painel dessas vendas com filtro por loja"</q></p></div>
+
+  <div class="biz"><b>🏢 Quer isso feito pra sua empresa?</b>
+    <p>Relatórios, painéis e automações sob medida para os dados do seu time, sem precisar de um time de TI.</p>
+    <a class="btn o" href="https://ig.me/m/filipe.dadoseia">Me chama no direct</a></div>
+
+  <p class="foot">O Copiloto Financeiro é uma ferramenta de organização e educação financeira, não é recomendação de investimento. Nunca envie senhas ou números completos de cartão para nenhuma IA. Uso livre para fins pessoais.</p>
+</div>
+<div class="toast" id="t">Link copiado ✓</div>
+<script>
+const isMob=/Android|iPhone|iPad|iPod|Instagram|FBAN|FBAV/i.test(navigator.userAgent)||window.innerWidth<700;
+if(isMob)document.getElementById('mob').classList.add('show');
+document.getElementById('send').onclick=async()=>{
+  const url=location.href,txt='Minhas ferramentas grátis de IA (abrir no computador): ';
+  try{if(navigator.share){await navigator.share({title:'Ferramentas grátis de IA',text:txt,url});return}}catch(e){}
+  try{await navigator.clipboard.writeText(url);const t=document.getElementById('t');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}catch(e){location.href='mailto:?subject=Ferramentas%20gr%C3%A1tis%20de%20IA&body='+encodeURIComponent(txt+url)}
+};
+</script>
+</body>
+</html>
